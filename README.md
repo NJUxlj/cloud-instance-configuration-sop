@@ -103,3 +103,87 @@ ssh推送的问题就解决了
 ## 人工智能平台PAI
 
 ### 什么是DSW（Data Science Workshop）
+
+
+
+
+
+
+
+### NAT网关
+(NAT配置)[https://mp.weixin.qq.com/s?__biz=MzI4OTMyODUwNA==&mid=2247485016&idx=1&sn=0526d9c396a0d9ea3e280e67b617ac46&chksm=ec319a4fdb4613598b5231a618cda173e8f531e87dc95a518d31700b736679a1a577dd04e8a5#rd]
+
+
+![image](https://github.com/user-attachments/assets/717a0404-0f31-4239-905c-9d1c59d10452)
+
+
+
+
+
+
+
+
+### Clash for linux 配置
+首先解压zip
+
+使用须知
+- 此项目不提供任何订阅信息，请自行准备Clash订阅地址。
+- 运行前请手动更改`.env`文件中的`CLASH_URL`变量值，否则无法正常运行。
+- 当前在RHEL系列和Debian系列Linux系统中测试过，其他系列可能需要适当修改脚本。
+- 支持 x86_64/aarch64 平台
+
+- 
+使用教程
+# 1. 进入到项目目录，编辑`.env`文件，修改变量`CLASH_URL`的值为订阅地址。
+cd clash-for-linux-master
+vim .env
+# `.env` 文件中的变量 `CLASH_SECRET` 为自定义 Clash Secret，值为空时，脚本将自动生成随机字符串，可以空着。
+# 启动程序
+sudo bash start.sh
+# 会有很简单明确的提示信息，按照提示执行
+注意：文件夹中有Readme.md，有更加详细的内容！！！这里不重复写了
+
+
+
+
+Clash Dashboard 访问地址: http://<ip>:9090/ui
+Secret: cd1995ae866114387f46ce4419f4472004dbddd2fd97cb010696086fe3686de3
+
+请执行以下命令加载环境变量: ```source /etc/profile.d/clash.sh```
+
+请执行以下命令开启系统代理: ```proxy_on```
+
+若要临时关闭系统代理，请执行: ```proxy_off```
+
+
+
+# 查看系统代理是否设置了
+echo $http_proxy
+# 查看终端中是否可以访问外网
+curl https://www.google.com
+
+# 如果没有添加系统代理，需要添加一下：
+# 方法1. 临时设置代理（仅对当前会话有效）
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+curl http://www.google.com
+# 方法2. 永久设置代理（对所有新会话有效）
+vim ~/.bashrc
+# 在文件末尾添加以下行：
+# export http_proxy=http://127.0.0.1:7890
+# export https_proxy=http://127.0.0.1:7890
+# 执行
+source ~/.bashrc
+
+# 现在还有另外一个问题，默认情况下，sudo 会清除环境变量。
+# 如果你需要在使用 sudo 时保留代理设置，可以使用 -E 选项：
+sudo -E http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 your_command
+# 这样每次运行会有点麻烦，于是可以在文件中写死
+sudo chmod +w /etc/sudoers
+sudo vim /etc/sudoers
+# 在文件中添加以下行：
+# Defaults env_keep += "http_proxy https_proxy"
+
+# 至此，结束！！！
+我感觉我现在能打十个了。
+
