@@ -8,8 +8,15 @@
 1. 如何配置oss盘
 
 2. 如何配置nas盘
+   (文件存储NAS)[https://nasnext.console.aliyun.com/overview?spm=a2c4g.2510079.0.0.6cb11436djubUj]
+   
+4. 如何挂载nas盘
 
-3. 如何挂载nas盘
+5. 如何配置转有网络
+
+6. 如何给RAM用户授权
+
+7. 如何配置RAM用户的权限列表，以及各个字段的常见含义
 
 1. oss盘无法用git拉取或推送，只能使用nas
 
@@ -72,3 +79,12 @@ git remote set-url origin git@github.com:NJUxlj/Travel-Agent-based-on-LLM-and-SF
 ```
 
 ssh推送的问题就解决了
+
+
+
+
+<br>
+
+## 人工智能平台PAI
+
+### 什么是DSW（Data Science Workshop）
