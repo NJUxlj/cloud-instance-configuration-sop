@@ -5,9 +5,18 @@
 
 1. 如何开启DSW实例
 
+   - 进入PAI工作台
+   - 在左侧边栏选择交互式建模，点击DSW
+
 1. 如何配置oss盘
 
-2. 如何配置nas盘
+   打开对象存储控制台
+   创建bucket，注意bucket的区域必须和容器一致
+   配置bucket接入点（需要用到专有网络的id）
+
+   oss盘在哪里挂载：创建DSW实例的时候自动会让你选择
+
+3. 如何配置nas盘
    (文件存储NAS)[https://nasnext.console.aliyun.com/overview?spm=a2c4g.2510079.0.0.6cb11436djubUj]
    
 4. 如何挂载nas盘
