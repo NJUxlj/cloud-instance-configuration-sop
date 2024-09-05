@@ -135,14 +135,18 @@ ssh推送的问题就解决了
 - 
 使用教程
 1. 进入到项目目录，编辑`.env`文件，修改变量`CLASH_URL`的值为订阅地址。
+```shell
 cd clash-for-linux-master
 vim .env
+```
 `.env` 文件中的变量 `CLASH_SECRET` 为自定义 Clash Secret，值为空时，脚本将自动生成随机字符串，可以空着。
 
-2. 启动程序
+3. 启动程序
+```shell
 sudo bash start.sh
+```
 会有很简单明确的提示信息，按照提示执行
-注意：文件夹中有Readme.md，有更加详细的内容！！！这里不重复写了
+注意：文件夹中有`Readme.md`，有更加详细的内容！！！这里不重复写了
 
 
 
@@ -159,37 +163,56 @@ Secret: cd1995ae866114387f46ce4419f4472004dbddd2fd97cb010696086fe3686de3
 
 
 - 查看系统代理是否设置了
+```shell
 echo $http_proxy
+```
 
 - 查看终端中是否可以访问外网
+```shell
 curl https://www.google.com
+```
 
 - 如果没有添加系统代理，需要添加一下：
 - 方法1. 临时设置代理（仅对当前会话有效）
+```shell
 export http_proxy=http://127.0.0.1:7890
 export https_proxy=http://127.0.0.1:7890
 curl http://www.google.com
+```
 
 - 方法2. 永久设置代理（对所有新会话有效）
+```shell
 vim ~/.bashrc
+```
+
 - 在文件末尾添加以下行：
+```shell
 export http_proxy=http://127.0.0.1:7890
 export https_proxy=http://127.0.0.1:7890
+```
 
 - 执行
+```shell
 source ~/.bashrc
-
+```
 #### 现在还有另外一个问题，默认情况下，sudo 会清除环境变量。
 
 如果你需要在使用 sudo 时保留代理设置，可以使用 -E 选项：
+```shell
 sudo -E http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 your_command
+```
+
 
 这样每次运行会有点麻烦，于是可以在文件中写死
+```shell
 sudo chmod +w /etc/sudoers
 sudo vim /etc/sudoers
+```
 
 在文件中添加以下行：
+```shell
 Defaults env_keep += "http_proxy https_proxy"
+```
 
 ### 至此，结束！！！
 
