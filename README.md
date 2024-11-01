@@ -43,7 +43,11 @@
 与git相关的问题请首先查阅 (github文档)[https://docs.github.com/en]
 (Generating a new SSH key and adding it to the ssh-agent)[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux]
 
-()[]
+添加git邮箱和用户名：
+```shell
+git config --global user.name "NJUxlj"
+git config --global user.email "1016509070@qq.com"
+```
 
 一键生成公钥和密钥
 ```shell
@@ -63,6 +67,23 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 
 ```
+
+把ssh公钥添加到你的Github账户, 以便为您的账户启用 SSH 访问
+For more information, see ("Adding a new SSH key to your GitHub account.")[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account]
+1. 将 SSH 公钥复制到剪贴板
+```shell
+$ cat ~/.ssh/id_ed25519.pub
+# 把其中的内容复制到剪贴板
+```
+
+2. 在 GitHub 上任何页面的右上角，单击您的个人资料照片，然后单击 Settings（设置）。
+3. 在侧边栏的 “Access（访问）”部分，单击 SSH 和 GPG 密钥。
+4. 单击 New SSH key （新建 SSH 密钥） 或 Add SSH key （添加 SSH 密钥）。
+5. 在“Title（标题）”字段中，为新键添加描述性标签。例如，如果您使用的是个人笔记本电脑，则可以将此键称为“个人笔记本电脑”。
+6. 选择密钥类型，即 authentication 或 signing。有关提交签名的详细信息，请参阅“关于提交签名验证”。
+7. 在 “Key” 字段中，粘贴您的公钥。
+8. 单击 Add SSH key（添加 SSH 密钥）。
+
 
 测试ssh是否生效
 ```shell
